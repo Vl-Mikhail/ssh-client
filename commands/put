@@ -1,0 +1,15 @@
+#!/bin/bash
+
+COMMAND="put"
+
+FILE_PATH=$1
+OUT_DIR=$2
+
+if [ -z "$OUT_DIR" ]; then
+  OUT_DIR='./'
+fi
+
+OUTDIR_ABS_PATH=`realpath "$OUT_DIR"`
+
+printf ' ; %s ; %s ; %s ' "$COMMAND" "$FILE_PATH" "$OUTDIR_ABS_PATH"
+printf '\x9C'

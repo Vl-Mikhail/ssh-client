@@ -1,0 +1,20 @@
+#!/bin/bash
+COMMAND="get"
+
+FILE_PATH=$1
+OUT_DIR=$2
+
+if [ -z "$OUT_DIR" ]; then
+  OUT_DIR='./'
+fi
+
+if [ ! -f "$FILE_PATH" ]; then
+  echo "FATAL: Not found: $FILE_PATH"
+  exit 1
+fi
+
+FILE_ABS_PATH=`realpath "$FILE_PATH"`
+FILE_NAME=`basename "$FILE_ABS_PATH"`
+
+printf ' ; %s ; %s ; %s ; %s' "$COMMAND" "$FILE_ABS_PATH" "$FILE_NAME" "$OUT_DIR"
+printf '\x9C'
