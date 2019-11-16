@@ -9,7 +9,7 @@ exports.remoteTcpForwarding = function (sshConn, srcHost, srcPort, dstHost, dstP
   });
 
   sshConn.on('tcp connection', (info, accept, reject) => {
-    const client = net.createConnection({ host: dstHost, port: dstPort }, () => {
+    const client = net.createConnection({host: dstHost, port: dstPort}, () => {
       const conn = accept();
       conn.on('close', () => {
         client.end();

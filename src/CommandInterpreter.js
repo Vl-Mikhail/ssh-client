@@ -15,6 +15,12 @@ exports.CommandInterpreter = class {
 
   interpr(data, cb) {
     const cmdFunction = this.availableCommands[data.command];
+
+    if (!cmdFunction) {
+      cb(new Error(`Команда не найдена`));
+      return;
+    }
+
     cmdFunction.call(this, ...data.args, cb);
   }
 

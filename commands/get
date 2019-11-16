@@ -16,5 +16,6 @@ fi
 FILE_ABS_PATH=`realpath "$FILE_PATH"`
 FILE_NAME=`basename "$FILE_ABS_PATH"`
 
+printf '\x9F'
 printf ' ; %s ; %s ; %s ; %s' "$COMMAND" "$FILE_ABS_PATH" "$FILE_NAME" "$OUT_DIR"
 printf '\x9C'
