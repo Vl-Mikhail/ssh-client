@@ -22,4 +22,4 @@ yarn install
 * `[--L [bind_address:]port:host:hostport]` - Проброс локального порта на удаленный сервер;
 * `[--R [bind_address:]port:host:hostport]` - Проброс удаленного порта на локальный компьютер;
 
-Пример: node ssh.js --L localhost:2222:[remote]:22 root:[password]@[ip]
+Пример: node ssh.js --L localhost:2222:[remote]:80 root:[password]@[ip]

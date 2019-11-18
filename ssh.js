@@ -21,8 +21,8 @@ function parseArgv(argv) {
 
 // https://github.com/mscdex/ssh2/issues/718
 conn.on('ready', () => {
-  if (argv.L) {
-    const [srcIP, srcPort, destIP, destPort] = parseArgv(argv.L);
+  if (argv.R) {
+    const [srcIP, srcPort, destIP, destPort] = parseArgv(argv.R);
     localTcpForwarding(conn, srcIP, srcPort, destIP, destPort, (err) => {
       if (err) {
         console.error('cannot local TCP Forwarding:', err.message);
@@ -30,7 +30,7 @@ conn.on('ready', () => {
     });
   }
 
-  if (argv.R) {
+  if (argv.L) {
     const [srcIP, srcPort, destIP, destPort] = parseArgv(argv.L);
     remoteTcpForwarding(conn, srcIP, srcPort, destIP, destPort, (err) => {
       if (err) {

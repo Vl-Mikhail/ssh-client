@@ -1,10 +1,9 @@
 /**
- *  Проброс локального порта на удаленный сервер;
+ *  Проброс удаленного порта на локальный компьютер;
  */
 const net = require('net');
 
 // sudo netstat -an | grep 2222
-// https://github.com/mscdex/ssh2/issues/675
 exports.localTcpForwarding = function (sshConn, srcHost, srcPort, dstHost, dstPort) {
   const server = net.createServer((sock) => {
     sshConn.forwardOut(srcHost, srcPort, dstHost, dstPort, (err, stream) => {
@@ -14,8 +13,8 @@ exports.localTcpForwarding = function (sshConn, srcHost, srcPort, dstHost, dstPo
         return;
       }
 
-      server.pipe(stream);
-      stream.pipe(server);
+      sock.pipe(stream);
+      stream.pipe(sock);
 
       stream.on('end', () => console.log('close'));
       sock.on('close', () => {
